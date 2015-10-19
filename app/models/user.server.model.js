@@ -10,6 +10,7 @@ var UserSchema = new Schema({
   },
   username: {
     type: String,
+    unique: true,
     trim: true,
     required: true
   },
@@ -25,6 +26,13 @@ var UserSchema = new Schema({
   salt: {
     type: String
   },
+  provider: {
+    type: String,
+    required: 'Provider is required'
+  },
+  providerId: String,
+  providerData: {},
+
   created: {
     type: Date,
     default: Date.now

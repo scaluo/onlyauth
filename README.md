@@ -7,3 +7,5 @@ important components
 * node v4.0.0
 * express v4.8.8
 * bootstrap v3.3.5
+* passport v0.2.1
+* passport-local v1.0.0
