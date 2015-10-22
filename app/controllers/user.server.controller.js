@@ -12,7 +12,7 @@ var getErrorMessage = function(err){
     case 11001:
       message = '用户邮箱已存在';
     default:
-      message = '出错了';
+      message = err.message;
     }
   }else{
     for (var errName in err.errors){
@@ -48,17 +48,17 @@ exports.signup = function(req,res,next){
         return res.redirect('/signup');
       }
       //mail.sendActiveMail(user.email,utility.md5(user.email+user.password),user.name);
-      //mail.sendActiveMail('onlyauth_t@163.com','tetete','test');
-      mail.sendTestMail();
+      mail.sendActiveMail('393395040@qq.com','tetete','test');
+      //mail.sendTestMail();
       //todo
-      return res.redirect('/');
+      //return res.redirect('/');
 
       //req.login(user,function(err){
       //  if (err) return next(err);
       //  return res.redirect('/');
       //});
 
-
+      return res.redirect('/');
     });
   }else{
     return res.redirect('/');

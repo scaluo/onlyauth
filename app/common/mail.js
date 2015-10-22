@@ -7,6 +7,7 @@ var sendMail = function(data){
     if (err){
       console.log(err);
     }
+    //transport.close();
   });
 };
 
