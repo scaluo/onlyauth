@@ -1,5 +1,8 @@
 var User = require('mongoose').model('User'),
-    passport = require('passport');
+    mail = require('../common/mail'),
+    passport = require('passport'),
+    utility = require('utility');
+
 
 var getErrorMessage = function(err){
   var message = '';
@@ -33,6 +36,7 @@ exports.renderSignup = function(req,res,next){
 };
 
 exports.signup = function(req,res,next){
+
   if (!req.user){
     var user = new User(req.body);
     var message = null;
@@ -43,10 +47,17 @@ exports.signup = function(req,res,next){
         req.flash('error',message);
         return res.redirect('/signup');
       }
-      req.login(user,function(err){
-        if (err) return next(err);
-        return res.redirect('/');
-      });
+      //mail.sendActiveMail(user.email,utility.md5(user.email+user.password),user.name);
+      //mail.sendActiveMail('onlyauth_t@163.com','tetete','test');
+      mail.sendTestMail();
+      //todo
+      return res.redirect('/');
+
+      //req.login(user,function(err){
+      //  if (err) return next(err);
+      //  return res.redirect('/');
+      //});
+
 
     });
   }else{

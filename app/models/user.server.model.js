@@ -33,6 +33,9 @@ var UserSchema = new Schema({
   providerId: String,
   providerData: {},
 
+  receive_reply_mail: {type: Boolean,default: false},
+  
+
   created: {
     type: Date,
     default: Date.now

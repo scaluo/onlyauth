@@ -12,6 +12,8 @@
     "express-session": "~1.7.6",
     "passport": "~0.2.1",
     "passport-local": "~1.0.0",
-    "connect-flash": "~0.1.1"
+    "connect-flash": "~0.1.1",
+    "nodemailer": "~0.3.43",
+    "utility": "~1.0.0"
   }
 }
