@@ -48,7 +48,7 @@ exports.signup = function(req,res,next){
         return res.redirect('/signup');
       }
       //mail.sendActiveMail(user.email,utility.md5(user.email+user.password),user.name);
-      mail.sendActiveMail('393395040@qq.com','tetete','test');
+      mail.sendActiveMail('393395040@qq.com','tokentoken','onlyauth');
       //mail.sendTestMail();
       //todo
       //return res.redirect('/');

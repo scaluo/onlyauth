@@ -14,21 +14,28 @@ var sendMail = function(data){
 exports.sendMail = sendMail;
 
 exports.sendTestMail = function(){
-  transport.sendMail({
-    from: 'from',
-    to: '393395040@qq.com',
-    subject: '这是onlyauth的认证',
-    html: '<p>onlyauth is a good project</p>'
-  },function(err,response){
-    if(err){
-            console.log(err);
-        }else{
-            console.log("Message sent: " + response.message);
-        }
-
-
+  var transport = mailer.createTransport({
+    host: 'smtp.163.com',
+    port: 25,
+    auth: {
+      user: 'onlyauth_t@163.com',
+      pass: 'onlyauth'
+    }
   });
-}
+  transport.sendMail({
+    from: 'sc_aluo@163.com',
+    to: '393395040@qq.com',
+    subject: 'hello',
+    html:'<p>这是邮箱确认链接<a href="http://www.baidu.com">http://www.baidu.com</a></p>'
+  },function(error, info){
+    if(error){
+        console.log(error);
+    }else{
+        console.log('Message sent: ' + info.response);
+    }
+  }
+  );
+};
 
 exports.sendActiveMail = function(who,token,name){
   var from = config.name;
@@ -39,9 +46,9 @@ exports.sendActiveMail = function(who,token,name){
              '<a href="'+config.root+'/active_account?key='+token+'&name='+name+'">激活链接</a>';
 
   exports.sendMail({
-    from: from,
-    to: to,
-    subject: subject,
-    html: html
+            from: from,
+            to: to,
+            subject: subject,
+            html: html
   });
 };
